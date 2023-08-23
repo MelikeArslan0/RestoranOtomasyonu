@@ -1,0 +1,49 @@
+﻿@model RestoranOtomasyonu.ViewModels.RezervasyonOlusturViewModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/YönetimPaneli/Views/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>RezervasyonOlusturViewModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-12 mb-20">
+            @Html.DisplayNameFor(model => model.Isim)
+        </dt>
+        <dd class="col-12 mb-20">
+            @Html.DisplayFor(model => model.Isim)
+        </dd>
+        <dt class="col-12 mb-20">
+            @Html.DisplayNameFor(model => model.Soyisim)
+        </dt>
+        <dd class="col-12 mb-20">
+            @Html.DisplayFor(model => model.Soyisim)
+        </dd>
+        <dt class="col-12 mb-20">
+            @Html.DisplayNameFor(model => model.Telefon)
+        </dt>
+        <dd class="col-12 mb-20">
+            @Html.DisplayFor(model => model.Telefon)
+        </dd>
+        <dt class="col-12 mb-20">
+            @Html.DisplayNameFor(model => model.Kisi)
+        </dt>
+        <dd class="col-12 mb-20">
+            @Html.DisplayFor(model => model.Kisi)
+        </dd>
+        <dt class="col-12 mb-20">
+            @Html.DisplayNameFor(model => model.Tarih)
+        </dt>
+        <dd class="col-12 mb-20">
+            @Html.DisplayFor(model => model.Tarih)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,37 @@
+﻿@model RestoranOtomasyonu.Models.icerik
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/YönetimPaneli/Views/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>icerik</h4>
+<hr />
+<div class="row">
+    <div class="col-12 mb-20">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IcerikID" />
+            <div class="form-group">
+                <label asp-for="urunlerID" class="control-label"></label>
+                <select asp-for="urunlerID" class="form-control" asp-items="ViewBag.urunlerID"></select>
+                <span asp-validation-for="urunlerID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IcerikAD" class="control-label"></label>
+                <input asp-for="IcerikAD" class="form-control" />
+                <span asp-validation-for="IcerikAD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-warning" asp-action="Index">Back to List</a>
+</div>
+

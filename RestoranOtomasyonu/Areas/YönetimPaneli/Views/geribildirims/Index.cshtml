@@ -1,0 +1,48 @@
+﻿@model IEnumerable<RestoranOtomasyonu.Models.geribildirim>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/YönetimPaneli/Views/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a class="btn btn-warning" asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.musteri)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aciklama)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YildizPuan)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.musteri.MusteriID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aciklama)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YildizPuan)
+            </td>
+            <td>
+                    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.GID">Edit</a> |
+                    <a class="btn btn-warning" asp-action="Details" asp-route-id="@item.GID">Details</a> |
+                    <a class="btn btn-warning" asp-action="Delete" asp-route-id="@item.GID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

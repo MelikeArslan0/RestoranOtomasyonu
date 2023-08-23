@@ -1,0 +1,138 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.Baslik{
+    font-family:'Times New Roman', Times, serif;
+    font-size:50px;
+  
+    
+}
+.buttonbaslik {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    color:white;
+}
+
+.img-box {
+    width: 100%;
+}
+
+
+.star {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.selected {
+    color: gold;
+}
+
+.hovered {
+    color: darkgoldenrod;
+}
+
+
+.footer {
+    margin-top: auto;
+}
+
+
+/* CSS Stil Kurallarý */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.login-table {
+    background-color:burlywood;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+    .login-table th {
+        text-align: left;
+    }
+
+    .login-table td input {
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        
+    }
+    .login-table button {
+        color: black; /* Ya da istediðiniz baþka bir renk */
+    }
+.section_Giris, .section_Kayitol {
+    width: 45%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.container {
+    text-align: center;
+    margin-top: 50px; /* Ýstediðiniz boþluk miktarý */
+}
+
+.sections-container {
+    display: flex;
+    justify-content: center;
+}
+
+.section_Giris, .section_Kayitol {
+    margin: 0 10px;
+}
+/* Kartýn genel görünümü */
+.card {
+    width: 500px; /* Kartýn geniþliðini burada belirleyebilirsiniz */
+    margin: 0 auto ; /* Kartýn ortalanmasý için bu stil kullanýlýyor */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: gray;
+    padding: 20px;
+}
+
+/* Baþlýk stilini belirleme */
+.card-header {
+    background-color: darkgray;
+    color: brown;
+    text-align: center;
+    padding: 10px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+/* Baþlýk yazý fontu ve boyutu */
+    .card-header h2 {
+        color: black;
+        font-family: 'Times New Roman';
+        font-size: 25px;
+        font-weight: bold;
+    }
+/* Kart içeriðinin genel görünümü */
+.card-body {
+    color: black;
+    font-family:'Times New Roman';
+    padding: 60px;
+    font-weight: bold;
+}
+
+ /* Kart içeriðindeki paragraf stilini belirleme */
+    .card-body p {
+        font-size: 25px;
+        margin-bottom: 10px;
+    }

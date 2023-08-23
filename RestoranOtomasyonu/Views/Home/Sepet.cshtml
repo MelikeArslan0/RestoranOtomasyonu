@@ -1,0 +1,108 @@
+﻿@model List<sepet>
+@{
+    ViewData["Title"] = "Sepet";
+    <link rel="shortcut icon" href="images/favicon.png" type="">
+    Layout = "_Layout";
+}
+
+<div>
+    <table class="table table-borderless">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Ürün</th>
+                <th scope="col">İçerik</th>
+                <th scope="col">Fiyat</th>
+                <th scope="col">Adet</th>
+                <th scope="col">Tutar</th>
+                <th scope="col">Masa No</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var sepetUrun in Model)
+            {
+                <tr>
+                    <td>@sepetUrun.urunler.UrunID</td>
+                    <td>@sepetUrun.urunler.UrunAD</td>
+                  @*  <td>
+                        @if (sepetUrun.icerik != null)
+                        {
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault">
+                                <label class="form-check-label" for="flexSwitchCheckDefault"> @sepetUrun.icerik.IcerikAD </label>
+                            </div>
+                        }
+                    </td>*@
+                    <td>
+                        @sepetUrun.urunler.UrunFiyat<label> TL </label>
+                    </td>
+                    <td>
+                        <input type="hidden" name="MasaID" value="@ViewBag.Masa">
+                        <select class="form-select" onchange="updateSelectedNumber(this.value, @sepetUrun.urunler.UrunID)">
+                            @for (int i = 0; i < 10; i++)
+                            {
+                                <option value="@i">@i</option>
+                            }
+                        </select>
+
+
+                        <input type="hidden" id="selectedNumber" value="0" />
+                    </td>
+                    <td>
+                        <span id="tutar"></span> TL
+                    </td>
+
+                    <td>
+                        <select id="masaSayisi" name="masaSayisi">
+                            @foreach (var masaSayisi in ViewBag.masasayisi)
+                            {
+                                <option value="@masaSayisi.AD">@masaSayisi.AD</option>
+                            }
+                        </select>
+                    </td>
+
+
+                </tr>
+
+
+
+
+            }
+
+
+        </tbody>
+
+
+    </table>
+    <button class="btn btn-warning btn-lg btn-block">Sipariş ver</button>
+</div>
+
+<div>
+    <br />
+    <br /> <br /> <br /> <br /> <br />
+    <br /> <br /> <br /> <br /> <br />
+
+</div>
+@foreach (var sepetUrun in Model)
+{
+    <script>
+        function updateSelectedNumber(number) {
+            document.getElementById("selectedNumber").value = number;
+            calculateTutar();
+        }
+
+        function calculateTutar() {
+            var selectedNumber = parseInt(document.getElementById("selectedNumber").value);
+            var urunFiyat = parseFloat("@sepetUrun.urunler.UrunFiyat");
+            var tutar = selectedNumber * urunFiyat;
+            document.getElementById("tutar").innerText = tutar.toFixed(2);
+        }
+
+        // Sayfa yüklendiğinde de hesaplama yapalım
+        window.onload = function () {
+            calculateTutar();
+        };
+
+
+    </script>
+}

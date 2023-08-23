@@ -1,0 +1,55 @@
+﻿@model RestoranOtomasyonu.Models.urunler
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/YönetimPaneli/Views/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>urunler</h4>
+    <hr />
+    <dl class="row">
+        <dt class ="col-12 mb-20">
+            @Html.DisplayNameFor(model => model.kategori)
+        </dt>
+        <dd class="col-12 mb-20">
+            @Html.DisplayFor(model => model.kategori.KategoriID)
+        </dd>
+        <dt class="col-12 mb-20">
+            @Html.DisplayNameFor(model => model.UrunAD)
+        </dt>
+        <dd class="col-12 mb-20">
+            @Html.DisplayFor(model => model.UrunAD)
+        </dd>
+        <dt class="col-12 mb-20">
+            @Html.DisplayNameFor(model => model.UrunFiyat)
+        </dt>
+        <dd class="col-12 mb-20">
+            @Html.DisplayFor(model => model.UrunFiyat)
+        </dd>
+        <dt class="col-12 mb-20">
+            @Html.DisplayNameFor(model => model.ResimYap)
+        </dt>
+        <dd class="col-12 mb-20">
+            @Html.DisplayFor(model => model.ResimYap)
+        </dd>
+        <dt class="col-12 mb-20">
+            @Html.DisplayNameFor(model => model.puandurum)
+        </dt>
+        <dd class="col-12 mb-20">
+            @Html.DisplayFor(model => model.puandurum)
+        </dd>
+        <dt class="col-12 mb-20">
+            @Html.DisplayNameFor(model => model.Puan)
+        </dt>
+        <dd class="col-12 mb-20">
+            @Html.DisplayFor(model => model.Puan)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model?.UrunID">Edit</a> |
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+</div>

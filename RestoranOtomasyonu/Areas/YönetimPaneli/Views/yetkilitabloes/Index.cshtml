@@ -1,0 +1,54 @@
+﻿@model IEnumerable<RestoranOtomasyonu.Models.yetkilitablo>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/YönetimPaneli/Views/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a class="btn btn-success"  asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.KTC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KUnvan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KAdSoyad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KTel)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.KTC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KUnvan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KAdSoyad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KTel)
+            </td>
+            <td>
+                    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" class="btn btn-warning" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" class="btn btn-warning" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

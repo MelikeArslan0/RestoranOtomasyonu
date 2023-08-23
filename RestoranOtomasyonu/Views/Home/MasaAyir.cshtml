@@ -1,0 +1,102 @@
+﻿@{
+    ViewData["Title"] = "MasaAyir";
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        /* Popup kutusu stilleri */
+        .popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body class="sub_page">
+    <!-- book section -->
+    <section class="book_section layout_padding">
+        <div class="container">
+            <div class="heading_container">
+                <h2 class="Baslik">
+                    Masa Ayır
+                </h2>
+            </div>
+            <!-- rezervasyon oluştu mesajı -->
+            <div class="popup" id="rezervasyonPopup">
+                Rezervasyonunuz alınmıştır.
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form_container">
+                        <form id="rezervasyonForm" method="post">
+                            <div>
+                                <input type="text" name="Isim" class="form-control" placeholder="ADINIZ">
+                            </div>
+                            <div>
+                                <input type="text" name="Soyisim" class="form-control" placeholder="SOYADINIZ">
+                            </div>
+                            <div>
+                                <input type="text" name="Telefon" class="form-control" placeholder="TELEFON NUMARASI">
+                            </div>
+                            <div>
+                                <input type="text" name="Kisi" class="form-control" placeholder="KİŞİ SAYISI">
+                            </div>
+                            <label for="meeting-time">REZERVASYON İÇİN TARİH VE SAAT SEÇİNİZ.</label><br />
+
+                            <input type="datetime-local" id="meeting-time"
+                                   name="meeting-time" value="2023-07-12T19:30"
+                                   min="2023-07-07T00:00" max="2023-30-12T00:00">
+
+                            <div class="btn_box">
+                                <!-- HTML -->
+                                <button id="btnMasaAyir" class="btn btn-warning btn-lg btn-block" type="button">MASA AYIR</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="map_container ">
+                        <div id="googleMap"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    document.getElementById("btnMasaAyir").addEventListener("click", function () {
+        $.ajax({
+            type: "POST",
+            url: "/Home/MasaAyir",
+            data: $("form").serialize(),
+            success: function (response) {
+                // Başarılı cevap alındığında popup mesajını göster
+                document.getElementById("rezervasyonPopup").style.display = "block";
+
+                // 3 saniye sonra popup mesajını gizle
+                setTimeout(function () {
+                    document.getElementById("rezervasyonPopup").style.display = "none";
+                }, 3000);
+            },
+            error: function (xhr, status, error) {
+                // Başarısız olduğunda hata mesajı verelim
+                alert("Rezervasyon alınamadı. Lütfen tekrar deneyin.");
+            }
+        });
+    });
+</script>

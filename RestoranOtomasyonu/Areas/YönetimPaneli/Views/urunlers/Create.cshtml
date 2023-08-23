@@ -1,0 +1,55 @@
+﻿@model RestoranOtomasyonu.Models.urunler
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/YönetimPaneli/Views/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>urunler</h4>
+<hr />
+<div class="row">
+    <div class="col-12 mb-20">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="KategoriID" class="control-label"></label>
+                <select asp-for="KategoriID" class="form-control" asp-items="@ViewBag.KategoriList"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="UrunAD" class="control-label"></label>
+                <input asp-for="UrunAD" class="form-control" />
+                <span asp-validation-for="UrunAD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UrunFiyat" class="control-label"></label>
+                <input asp-for="UrunFiyat" class="form-control" />
+                <span asp-validation-for="UrunFiyat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ResimYap" class="control-label"></label>
+                <input asp-for="ResimYap" class="form-control" />
+                <span asp-validation-for="ResimYap" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="puandurum" /> @Html.DisplayNameFor(model => model.puandurum)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Puan" class="control-label"></label>
+                <input asp-for="Puan" class="form-control" />
+                <span asp-validation-for="Puan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-warning" asp-action="Index">Back to List</a>
+</div>
+

@@ -1,0 +1,31 @@
+﻿@model RestoranOtomasyonu.Models.kategori
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/YönetimPaneli/Views/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>kategori</h4>
+<hr />
+<div class="row">
+    <div class="col-12 mb-20">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="KategoriAd" class="control-label"></label>
+                <input asp-for="KategoriAd" class="form-control" />
+                <span asp-validation-for="KategoriAd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-warning" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+</div>
+

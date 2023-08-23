@@ -1,0 +1,47 @@
+﻿@model RestoranOtomasyonu.Models.yetkilitablo
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/YönetimPaneli/Views/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>yetkilitablo</h4>
+<hr />
+<div class="row">
+    <div class="col-12 mb-20">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="KTC" class="control-label"></label>
+                <input asp-for="KTC" class="form-control" />
+                <span asp-validation-for="KTC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KUnvan" class="control-label"></label>
+                <input asp-for="KUnvan" class="form-control" />
+                <span asp-validation-for="KUnvan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KAdSoyad" class="control-label"></label>
+                <input asp-for="KAdSoyad" class="form-control" />
+                <span asp-validation-for="KAdSoyad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KTel" class="control-label"></label>
+                <input asp-for="KTel" class="form-control" />
+                <span asp-validation-for="KTel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-warning" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+</div>
+

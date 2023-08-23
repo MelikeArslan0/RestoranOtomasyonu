@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewData["Title"] = "Sepetislem";
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+    int MasaID = Convert.ToInt32(TempData["MasaID"]);
+}
+<h1 class="Baslik"> Sepetim</h1>
+<form action="/Puan/Sepetislem" method="post">
+    <table class="table table-borderless">
+        <thead>
+            <tr>
+                <th scope="col">Ürün</th>           
+                <th scope="col">Fiyat</th>
+                <th scope="col">Adet</th>
+                <th scope="col">Tutar</th>
+                <th scope="col">Masa No</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>@Model.UrunAD</td>              
+                <td>
+                    @Model.Puan<label> Puan </label>
+                </td>
+                <td>
+                    <select class="form-select" name="Adet" onchange="updateSelectedNumber(this.value, @Model.UrunID)">
+                        @for (int i = 1; i <= 10; i++)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+                    <input type="hidden" id="selectedNumber" value="1" />
+                </td>
+                <td>
+                    <span ></span> 0  Puan
+                    <input type="hidden" name="Tutar" id="TutarVal" />
+                </td>
+                <td>
+                    @ViewBag.Masa
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <input type="hidden" name="UrunID" value="@TempData["UrunID"]" />
+    <input type="hidden" name="MasaID" value="@TempData["MasaID"]" />
+    <button action="/Puan/sepetim" class="btn btn-warning btn-lg btn-block" type="submit">Sipariş Ver</button>
+
+    <button action="/Puan/PuanSorgula" class="btn btn-primary btn-lg btn-block" type="submit">Puan kullan</button>
+</form>
+<div>
+    <br />
+    <br /> <br /> <br /> <br /> <br />
+    <br /> <br /> <br /> <br /> <br />
+</div>
+
+<script>
+    // Sayfa yüklendiğinde adet değerini 1 olarak atayalım ve tutarı güncelleyelim
+    window.onload = function () {
+      
+        updateSelectedNumber(1, @Model.UrunID); // Varsayılan adet değeri 1 ve ürün ID'sini gönder
+    };
+</script>

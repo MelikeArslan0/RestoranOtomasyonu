@@ -1,0 +1,42 @@
+﻿@model RestoranOtomasyonu.Models.geribildirim
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/YönetimPaneli/Views/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>geribildirim</h4>
+<hr />
+<div class="row">
+    <div class="col-12 mb-20">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="GID" />
+            <div class="form-group">
+                <label asp-for="MusteriID" class="control-label"></label>
+                <select asp-for="MusteriID" class="form-control" asp-items="ViewBag.MusteriID"></select>
+                <span asp-validation-for="MusteriID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Aciklama" class="control-label"></label>
+                <input asp-for="Aciklama" class="form-control" />
+                <span asp-validation-for="Aciklama" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="YildizPuan" class="control-label"></label>
+                <input asp-for="YildizPuan" class="form-control" />
+                <span asp-validation-for="YildizPuan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-warning" asp-action="Index">Back to List</a>
+</div>
+

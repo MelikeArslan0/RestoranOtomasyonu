@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewData["Title"] = "GeriiBildirim";
+    Layout = "_Layout";
+}
+
+<h1 class="Baslik">Bizi Puanlayın...</h1>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form_container">
+            <form action="/Home/GeriiBildirim/GeriiBildirim" method="post" class="Baslik">
+                <div>
+                    <input type="text" name="Ad" class="form-control" placeholder="ADINIZ">
+                </div>
+                <div>
+                    <input type="text" name="SoyAD" class="form-control" placeholder="SOYADINIZ">
+                </div>
+                <div>
+                    <input type="text" name="Telefon" class="form-control" placeholder="TELEFON">
+                </div>
+                <div>
+                    <input type="text" name="Acıklama" class="form-control" placeholder="Geri Bildiriminiz">
+                </div>
+
+                <div>
+                    <div class="rating">
+                        <span class="star" data-value="1">&#9733;</span>
+                        <span class="star" data-value="2">&#9733;</span>
+                        <span class="star" data-value="3">&#9733;</span>
+                        <span class="star" data-value="4">&#9733;</span>
+                        <span class="star" data-value="5">&#9733;</span>
+                    </div>
+                    <input type="hidden" name="puan" id="hiddenPuan" value="0" />
+                </div>        
+                <div class="btn_box">
+                    <button class="btn btn-warning">
+                       Kaydet
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>    
+</div>
+<script>
+    const stars = document.querySelectorAll('.star');
+    const hiddenPuan = document.getElementById('hiddenPuan');
+
+    stars.forEach(star => {
+        star.addEventListener('click', function () {
+            const puan = parseInt(this.getAttribute('data-value'));
+            hiddenPuan.value = puan;
+
+            // Seçilen yıldızı vurgula
+            stars.forEach(s => s.classList.remove('selected'));
+            for (let i = 0; i < puan; i++) {
+                stars[i].classList.add('selected');
+            }
+        });
+
+        star.addEventListener('mouseover', function () {
+            const puan = parseInt(this.getAttribute('data-value'));
+
+            // Fare yıldızların üzerine geldiğinde vurgula
+            stars.forEach(s => s.classList.remove('hovered'));
+            for (let i = 0; i < puan; i++) {
+                stars[i].classList.add('hovered');
+            }
+        });
+
+        star.addEventListener('mouseout', function () {
+            // Fare yıldızların üzerinden çıkınca vurgulamayı kaldır
+            stars.forEach(s => s.classList.remove('hovered'));
+        });
+    });
+
+</script>
+
+<style>
+    .star {
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .selected {
+        color: gold;
+    }
+
+    .hovered {
+        color: darkgoldenrod;
+    }
+</style>

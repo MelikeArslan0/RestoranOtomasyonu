@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewData["Title"] = "FileUpload";
+    Layout = "~/Areas/YönetimPaneli/Views/_Layout.cshtml";
+}
+
+<h1>FileUpload</h1>
+
+<form method="post" enctype="multipart/form-data" asp-controller="Admin" asp-action="FileUpload">
+
+    <div class="form-group">
+        <label class="form-label">Dosya Yükle</label>
+        <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1">
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Dosyayı Gönder</button>
+</form>

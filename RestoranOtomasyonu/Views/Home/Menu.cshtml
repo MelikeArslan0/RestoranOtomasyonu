@@ -1,0 +1,201 @@
+﻿@model RestoranOtomasyonu.ViewModels.MenuViewModel
+@{
+    ViewData["Title"] = "Menu";
+    <link rel="shortcut icon" href="images/favicon.png" type="">
+
+    int MasaID = Convert.ToInt32(TempData["MasaID"]);
+}
+
+<section class="food_section layout_padding">
+    <div class="container">
+        <div class="heading_container heading_center">
+            <h2 class="Baslik">
+                Menu
+            </h2>
+        </div>
+
+        <ul class="filters_menu">
+            <li class="active" data-filter="*">All</li>
+            @foreach (var kategori in Model.kategoris)
+            {
+                <li data-filter=".kategori-@kategori.KategoriID">@kategori.KategoriAd</li>
+            }
+        </ul>
+
+        <div class="filters-content">
+            <div class="row grid">
+               
+            
+                
+                @foreach (var urun in Model.Urunler)
+                {
+                    <div class="col-sm-6 col-lg-4 All kategori-@urun.KategoriID">
+                        <div class="box">
+                            <div class="img-box">
+                                <img src="@urun.ResimYap" alt="">
+                            </div>
+
+                            <div class="detail-box">
+                                <h5>
+                                    @urun.UrunAD
+                                </h5>
+                                <p>
+                                    @foreach (var icerik in Model.Icerikler)
+                                    {
+                                        @if (icerik.urunlerID == urun.UrunID)
+                                        {
+                                            <span class="icerik-item">@icerik.IcerikAD</span>
+                                        }
+                                    }
+                                </p>
+                                <div class="options">
+                                    <h6>
+                                        @urun.UrunFiyat  TL
+                                    </h6>
+                                </div>
+                                <a href="@Url.Action("urundegerlendir", "Home", new { id = urun.UrunID })">
+                                    <img src="/template/ikon/geribildirimicon.png" />
+                                </a>
+                                @*@* MASAID Si zaten COOKİE içerisinde Mevcut. Cookie den MASAID sini aşağıya yazdır.ViewBag.MasaID  *@
+                                <a href="@Url.Action("Sepetim", "Home", new { UrunId = urun.UrunID, MasaID=@TempData["MasaID"]})">
+                                    <img src="/template/ikon/sepet1.png" />  
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            
+            </div>
+        </div>
+
+
+
+    
+    
+    </div>
+</section>
+
+
+
+<div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br /> <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <br />
+    <br />
+    <br />
+    <br />
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

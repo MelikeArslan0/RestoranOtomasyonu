@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="sections-container">
+    <section class="section_Giris">
+        <div class="heading_container">
+            <h2 class="Baslik">
+                Giriş Bilgilerinizi yazınız
+            </h2>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form_container">
+                    <form>
+                        <table class="login-table">
+                            
+                            <tbody>
+                                <tr>
+                                    <th><input type="text" placeholder="Kullanıcı Adı"></th>
+                                </tr>
+                                <tr>
+                                    <th><input type="password" placeholder="Şifre"></th>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <a href="@Url.Action("PuanListele","Puan")" class="btn btn-warning">
+                                            <span style="color: black;">Giriş</span>
+                                        </a>
+
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                  
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section_Kayitol">
+        <div class="heading_container">
+            <h2 class="Baslik">
+                Kayıt ol
+            </h2>
+        </div>
+        <div class="container">
+            <form action="/Puan/Kayitol" method="post">
+                <table class="login-table">
+                    <tbody>
+                        <tr>
+                            <th><input name="Ad" type="text" placeholder="Ad"></th>
+                        </tr>
+                        <tr>
+                            <th><input name="Soyad" type="text" placeholder="Soyad"></th>
+                        </tr>
+                        <tr>
+                            <th><input name="Telefon" type="text" placeholder="Telefon"></th>
+                        </tr>
+                        <tr>
+                            <th><input name="Mail" type="text" placeholder="Mail"></th>
+                        </tr>
+                        <tr>
+                            <th><input name="Kullaniciadi" type="text" placeholder="Kullanıcı Adı"></th>
+                        </tr>
+                        <tr>
+                            <th><input name="sifre"  type="password" placeholder="Şifre"></th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <button type="submit" formmethod="post" class="btn btn-warning">
+                                    <span style="color: black;">Kayıt Ol</span>
+                                </button>
+                           </th>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </section>
+</div>

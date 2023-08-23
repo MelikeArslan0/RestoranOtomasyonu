@@ -1,0 +1,31 @@
+﻿@model RestoranOtomasyonu.Models.icerik
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/YönetimPaneli/Views/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>icerik</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-12 mb-20">
+            @Html.DisplayNameFor(model => model.IcerikAD)
+        </dt>
+        <dd class="col-12 mb-20">
+            @Html.DisplayFor(model => model.IcerikAD)
+        </dd>
+        <dt class="col-12 mb-20">
+            @Html.DisplayNameFor(model => model.urunler)
+        </dt>
+        <dd class="col-12 mb-20">
+            @Html.DisplayFor(model => model.urunler.UrunID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model?.IcerikID">Edit</a> |
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+</div>

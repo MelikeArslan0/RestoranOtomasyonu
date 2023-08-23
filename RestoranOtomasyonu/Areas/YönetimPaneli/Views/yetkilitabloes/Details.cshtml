@@ -1,0 +1,43 @@
+﻿@model RestoranOtomasyonu.Models.yetkilitablo
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/YönetimPaneli/Views/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>yetkilitablo</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-12 mb-20">
+            @Html.DisplayNameFor(model => model.KTC)
+        </dt>
+        <dd class="col-12 mb-20">
+            @Html.DisplayFor(model => model.KTC)
+        </dd>
+        <dt class="col-12 mb-20">
+            @Html.DisplayNameFor(model => model.KUnvan)
+        </dt>
+        <dd class="col-12 mb-20">
+            @Html.DisplayFor(model => model.KUnvan)
+        </dd>
+        <dt class="col-12 mb-20">
+            @Html.DisplayNameFor(model => model.KAdSoyad)
+        </dt>
+        <dd class="col-12 mb-20">
+            @Html.DisplayFor(model => model.KAdSoyad)
+        </dd>
+        <dt class="col-12 mb-20">
+            @Html.DisplayNameFor(model => model.KTel)
+        </dt>
+        <dd class="col-12 mb-20">
+            @Html.DisplayFor(model => model.KTel)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@Model?.ID">Edit</a> |
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+</div>

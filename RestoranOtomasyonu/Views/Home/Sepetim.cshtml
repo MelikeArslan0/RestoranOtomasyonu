@@ -1,0 +1,105 @@
+﻿@model urunler
+@{
+    ViewData["Title"] = "Sepetim";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int MasaID = Convert.ToInt32(TempData["MasaID"]);
+}
+<h1>Sepetim</h1>
+<form action="/home/sepetim" method="post">
+    <table class="table table-borderless">
+        <thead>
+            <tr>
+                <th scope="col">Ürün</th>
+                <th scope="col">İçerik</th>
+                <th scope="col">Fiyat</th>
+                <th scope="col">Adet</th>
+                <th scope="col">Tutar</th>
+                <th scope="col">Masa No</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>              
+                <td>@Model.UrunAD</td>
+                <td>
+                    @if (Model.icerik.Count() != 0)
+                    {
+                        @foreach (var item in Model.icerik)
+                        {
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" name="Icerikler[]" value="@item.IcerikID" type="checkbox" id="flexSwitchCheckDefault">
+                                <label class="form-check-label" for="flexSwitchCheckDefault"> @item.IcerikAD </label>
+                            </div>
+                        }
+                    }
+                </td>
+                <td>
+                    @Model.UrunFiyat<label> TL </label>
+                </td>
+                <td>
+                    <select class="form-select" name="Adet" onchange="updateSelectedNumber(this.value, @Model.UrunID)">
+                        @for (int i = 1; i <= 10; i++)
+                        {
+                            <option value="@i">@i</option>
+                        }
+                    </select>
+                    <input type="hidden" id="selectedNumber" value="1" />
+                </td>
+                <td>
+                    <span id="tutarDisplay"></span> TL
+                    <input type="hidden" name="Tutar" id="TutarVal" />
+                    <label id="indirimLabel" style="display: none;"></label>
+                </td>
+                <td>
+                    @ViewBag.Masa
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <input type="hidden" name="UrunId" value="@Model.UrunID" />
+    <input type="hidden" name="MasaID" value="@TempData["MasaID"]" />
+
+    <button action="/home/sepetim" class="btn btn-warning btn-lg btn-block" type="submit">Sipariş Ver</button>
+</form>
+<div>
+    <br />
+    <br /> <br /> <br /> <br /> <br />
+    <br /> <br /> <br /> <br /> <br />
+</div>
+<script>
+    function updateSelectedNumber(adet, urunId) {
+        var urunFiyat = parseFloat("@Model.UrunFiyat");
+        var indirimYuzde = 0;
+        var indirimLabel = document.getElementById("indirimLabel");
+
+        // Ürün ID'sine göre indirim yüzdesini ayarla ve label içeriğini güncelle
+        if (urunId === 13) {
+            indirimYuzde = 15;
+        } else if (urunId === 14) {
+            indirimYuzde = 20;
+        }
+
+        var indirimliFiyat = urunFiyat - (urunFiyat * indirimYuzde / 100);
+        var tutar = adet * indirimliFiyat;
+
+        // Label içeriğini güncelle
+        if (indirimYuzde > 0) {
+            indirimLabel.innerText = "İndirim Uygulandı: %" + indirimYuzde;
+            indirimLabel.style.display = "block";
+        } else {
+            indirimLabel.style.display = "none";
+        }
+
+        document.getElementById("tutarDisplay").innerText = tutar.toFixed(2);
+        document.getElementById("TutarVal").value = tutar; // Tutar değerini inputa yaz
+    }
+
+    // Sayfa yüklendiğinde adet değerini 1 olarak atayalım ve tutarı güncelleyelim
+    window.onload = function () {
+        document.getElementById("TutarVal").value = parseFloat("@Model.UrunFiyat").toFixed(2);
+        updateSelectedNumber(1, @Model.UrunID); // Varsayılan adet değeri 1 ve ürün ID'sini gönder
+    };
+</script>
+
+
+
+
